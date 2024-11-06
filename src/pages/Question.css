@@ -1,0 +1,62 @@
+/* Light Theme - Hide the default radio button */
+.answer-option input[type="radio"] {
+  display: none;
+}
+
+/* Light Theme - Style the label to make the text clickable */
+.answer-option label {
+  cursor: pointer; /* Makes the text clickable */
+  display: block;
+  padding: 10px;
+  font-size: 1.2rem; /* Larger font size */
+  border-radius: 5px;
+  background-color: #f8f9fa; /* Light background color */
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* Light Theme - Hover effect for the clickable label */
+.answer-option label:hover {
+  background-color: #e9ecef; /* Light hover effect */
+}
+
+/* Light Theme - Style the label when the radio button is checked */
+.answer-option input[type="radio"]:checked + label {
+  background-color: #dcdcdc; /* Slight grey background when selected */
+  color: #333; /* Optional: Change text color when selected */
+}
+
+/* Dark Theme - Hide the default radio button */
+.bg-dark .answer-option input[type="radio"] {
+  display: none;
+}
+
+/* Dark Theme - Style the label to make the text clickable */
+.bg-dark .answer-option label {
+  cursor: pointer; /* Makes the text clickable */
+  display: block;
+  padding: 10px;
+  font-size: 1.2rem; /* Larger font size */
+  border-radius: 5px;
+  color: #fff; /* Light text color */
+  margin-bottom: 10px;
+  background-color: #212529; /* Dark background for unselected labels */
+  transition: background-color 0.3s ease;
+}
+
+/* Dark Theme - Hover effect for the clickable label */
+.bg-dark .answer-option label:hover {
+  background-color: #343a40; /* Slightly lighter background on hover */
+}
+
+/* Dark Theme - Style the label when the radio button is unchecked */
+.bg-dark .answer-option input[type="radio"]:not(:checked) + label {
+  background-color: #212529; /* Match the background color of dark theme */
+  color: #fff; /* Keep the text color light when not selected */
+}
+
+/* Dark Theme - Style the label when the radio button is checked */
+.bg-dark .answer-option input[type="radio"]:checked + label {
+  background-color: #495057; /* Slight grey background when selected in dark mode */
+  color: #fff; /* Keep the text color light when selected */
+}
