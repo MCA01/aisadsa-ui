@@ -10,8 +10,6 @@ import Navbar from "react-bootstrap/Navbar";
 import { useState, createContext, useContext } from "react";
 import {BrowserRouter, Routes, Route, Link, useNavigate, Navigate} from "react-router-dom";
 import Button from "react-bootstrap/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSun, faMoon } from "@fortawesome/free-regular-svg-icons";
 
 // Create auth context
 export const AuthContext = createContext(null);
@@ -26,7 +24,6 @@ export const useAuth = () => {
 };
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
   const [currentUser, setCurrentUser] = useState(localStorage.getItem("currentUser"));
 
   const login = (userData) => {
@@ -57,20 +54,14 @@ function App() {
     <AuthContext.Provider value={{ currentUser, login, logout }}>
       <BrowserRouter>
         <Container
-          className={
-            darkMode
-              ? "bg-dark text-light min-vh-100 p-0"
-              : "bg-light text-dark min-vh-100 p-0"
-          }
+          className="bg-light min-vh-100 p-0"
           fluid
         >
           <Navbar
             expand="lg"
             className="boxShadow"
             style={{
-              boxShadow: darkMode
-                ? "0 4px 6px -1px rgba(255, 255, 255, 0.1)"
-                : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
               height: "56px",
               marginBottom: 0,
               position: "relative",
@@ -81,33 +72,24 @@ function App() {
               <Navbar.Brand
                 as={Link}
                 to="/"
-                style={{ color: darkMode ? "#FFFFFF" : "#333333" }}
+                style={{ color: "#333333" }}
               >
                 AISADSA
               </Navbar.Brand>
               <div className="d-flex align-items-center">
                 {currentUser && (
                   <Button
-                    variant={darkMode ? "dark" : "light"}
+                    variant="light"
                     onClick={logout}
                     className="me-2"
                   >
                     Logout
                   </Button>
                 )}
-                <Button
-                  variant={darkMode ? "dark" : "light"}
-                  onClick={() => setDarkMode(!darkMode)}
-                >
-                  {darkMode ? (
-                    <FontAwesomeIcon icon={faSun} />
-                  ) : (
-                    <FontAwesomeIcon icon={faMoon} />
-                  )}
-                </Button>
               </div>
             </Container>
           </Navbar>
+
           <Routes>
             <Route path="/" element={currentUser == null ? <Navigate to="/auth" /> : <MainPage />} />
             <Route path="/question" element={currentUser == null ? <Navigate to="/auth" /> : <Question />} />

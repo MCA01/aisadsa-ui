@@ -17,19 +17,23 @@
   /* Add space for resize handle */
 }
 
-.result-card {
+.result-section {
   background: white;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
-.result-title {
+.result-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
   color: #2c3e50;
   margin-bottom: 1.5rem;
-  text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .result-content {
@@ -37,10 +41,113 @@
   line-height: 1.6;
   color: #34495e;
   white-space: pre-wrap;
-  padding: 1rem;
+  padding: 1.5rem;
   background: #f8f9fa;
   border-radius: 8px;
   border: 1px solid #e9ecef;
+}
+
+/* Markdown content styles */
+.markdown-content {
+  white-space: normal;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: #2c3e50;
+}
+
+.markdown-content h1 {
+  font-size: 2rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.75rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.5rem;
+}
+
+.markdown-content h4 {
+  font-size: 1.25rem;
+}
+
+.markdown-content h5 {
+  font-size: 1.1rem;
+}
+
+.markdown-content h6 {
+  font-size: 1rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5rem;
+}
+
+.markdown-content code {
+  background-color: #e9ecef;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.markdown-content pre {
+  background-color: #e9ecef;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  font-size: 0.9em;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #e9ecef;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1rem;
+  color: #6c757d;
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.markdown-content th,
+.markdown-content td {
+  padding: 0.75rem;
+  border: 1px solid #e9ecef;
+}
+
+.markdown-content th {
+  background-color: #f1f3f5;
+  font-weight: 600;
 }
 
 .chat-sidebar {
@@ -49,7 +156,7 @@
   /* Minimum width */
   max-width: 800px;
   /* Maximum width */
-  border-left: 1px solid var(--bs-border-color);
+  border-left: 1px solid #dee2e6;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -76,36 +183,20 @@
   content: "";
   width: 4px;
   height: 50px;
-  background-color: var(--bs-border-color);
+  background-color: #dee2e6;
   border-radius: 2px;
   transition: all 0.2s ease;
 }
 
 /* Hover and active states */
 .chat-sidebar-resizer:hover::after {
-  background-color: var(--bs-primary);
+  background-color: #0d6efd;
   height: 100px;
 }
 
 .chat-sidebar-resizer.active::after {
-  background-color: var(--bs-primary);
+  background-color: #0d6efd;
   height: 100px;
-}
-
-/* Dark theme adjustments */
-[data-bs-theme="dark"] .result-card {
-  background: var(--bs-secondary-bg);
-  border: 1px solid var(--bs-border-color);
-}
-
-[data-bs-theme="dark"] .result-title {
-  color: var(--bs-body-color);
-}
-
-[data-bs-theme="dark"] .result-content {
-  background: var(--bs-tertiary-bg);
-  border-color: var(--bs-border-color);
-  color: var(--bs-body-color);
 }
 
 /* Responsive layout */
@@ -145,15 +236,45 @@
     min-width: 100%;
     max-width: 100%;
     border-left: none;
-    border-top: 1px solid var(--bs-border-color);
+    border-top: 1px solid #dee2e6;
   }
 
   .chat-sidebar-resizer {
     display: none;
   }
 
-  .result-card {
-    margin-top: 1rem;
+  .result-section {
     padding: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-content {
+    padding: 1rem;
+  }
+
+  .markdown-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .markdown-content h2 {
+    font-size: 1.5rem;
+  }
+
+  .markdown-content h3 {
+    font-size: 1.25rem;
+  }
+
+  .markdown-content h4 {
+    font-size: 1.1rem;
+  }
+
+  .markdown-content h5,
+  .markdown-content h6 {
+    font-size: 1rem;
   }
 }

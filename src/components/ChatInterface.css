@@ -3,14 +3,14 @@
   flex-direction: column;
   height: 100%;
   width: 100%;
-  background: var(--bs-body-bg);
+  background: white;
 }
 
 .chat-header {
   padding: 1rem;
   font-weight: 600;
-  border-bottom: 1px solid var(--bs-border-color);
-  background: var(--bs-body-bg);
+  border-bottom: 1px solid #dee2e6;
+  background: white;
   flex-shrink: 0;
   height: 56px;
   /* Match navbar height */
@@ -43,20 +43,20 @@
 
 .user-message {
   align-self: flex-end;
-  background-color: var(--bs-primary);
+  background-color: #0d6efd;
   color: white;
   border-bottom-right-radius: 0.25rem;
 }
 
 .assistant-message {
   align-self: flex-start;
-  background-color: var(--bs-secondary);
+  background-color: #6c757d;
   color: white;
   border-bottom-left-radius: 0.25rem;
 }
 
 .error-message {
-  background-color: var(--bs-danger) !important;
+  background-color: #dc3545 !important;
 }
 
 .message-content {
@@ -75,8 +75,8 @@
   display: flex;
   gap: 0.5rem;
   padding: 1rem;
-  background: var(--bs-body-bg);
-  border-top: 1px solid var(--bs-border-color);
+  background: white;
+  border-top: 1px solid #dee2e6;
   flex-shrink: 0;
   align-items: flex-end;
   /* Align items to bottom */
@@ -109,7 +109,7 @@
 }
 
 .chat-input:disabled {
-  background-color: var(--bs-gray-200) !important;
+  background-color: #e9ecef !important;
   opacity: 0.8;
 }
 
@@ -126,11 +126,6 @@
 
 .send-button:disabled {
   opacity: 0.7;
-}
-
-/* Dark theme adjustments */
-[data-bs-theme="dark"] .chat-input:disabled {
-  background-color: var(--bs-gray-800) !important;
 }
 
 /* Mobile responsiveness */
