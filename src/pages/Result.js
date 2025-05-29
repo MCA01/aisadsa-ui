@@ -15,6 +15,51 @@ function Result() {
   const chatSidebarRef = useRef(null);
   const resizerRef = useRef(null);
 
+  const handlePrint = () => {
+    // Create a new window for printing
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) {
+      alert('Please allow popups for printing');
+      return;
+    }
+
+    // Get the main content
+    const mainContent = document.querySelector('.main-content').innerHTML;
+    
+    // Create the print document
+    printWindow.document.write(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>Print Result</title>
+          <link rel="stylesheet" href="/static/css/main.css">
+          <style>
+            body { margin: 0; padding: 20px; }
+            .main-content { width: 100%; }
+            @media print {
+              body { margin: 0; }
+              .main-content { width: 100%; }
+            }
+          </style>
+        </head>
+        <body>
+          <div class="main-content">
+            ${mainContent}
+          </div>
+          <script>
+            window.onload = function() {
+              window.print();
+              window.onafterprint = function() {
+                window.close();
+              };
+            };
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+  };
+
   useEffect(() => {
     const fetchAiResult = async () => {
       try {
@@ -111,6 +156,30 @@ function Result() {
         <Container>
           <Row className="justify-content-center">
             <Col xs={12}>
+              <div className="d-flex justify-content-end mb-3">
+                <button 
+                  className="print-button" 
+                  onClick={handlePrint}
+                  title="Print as PDF"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    width="24" 
+                    height="24" 
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    strokeWidth="2" 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round"
+                  >
+                    <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                    <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                    <rect x="6" y="14" width="12" height="8"></rect>
+                  </svg>
+                </button>
+              </div>
+
               {/* Business Rule Engine Result */}
               <div className="result-section">
                 <h3 className="section-title">Result</h3>
