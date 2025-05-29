@@ -45,11 +45,13 @@
   background: #f8f9fa;
   border-radius: 8px;
   border: 1px solid #e9ecef;
+  text-align: left;
 }
 
 /* Markdown content styles */
 .markdown-content {
   white-space: normal;
+  text-align: left;
 }
 
 .markdown-content h1,
